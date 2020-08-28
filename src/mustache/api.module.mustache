@@ -1,7 +1,7 @@
 {{! Copyright(c) 1995 - 2018 T-Systems Multimedia Solutions GmbH }}
 {{! Riesaer Str. 5, 01129 Dresden }}
 {{! All rights reserved. }}
-import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
+import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { Configuration } from './configuration';
 {{#useHttpClient}}import { HttpClient } from '@angular/common/http';{{/useHttpClient}}
 {{^useHttpClient}}import { Http } from '@angular/http';{{/useHttpClient}}
@@ -21,7 +21,7 @@ import { {{classname}} } from './{{importPath}}';
     {{/hasMore}}{{/apis}}{{/apiInfo}} ]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: (...args: any[]) => Configuration, deps?: any[]): ModuleWithProviders {
+    public static forRoot(configurationFactory: (...args: any[]) => Configuration, deps?: any[]) {
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory, deps } ]
